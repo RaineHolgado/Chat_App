@@ -1,7 +1,10 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:raine_chat_app/screens/welcome_view.dart';
+import 'package:raine_chat_app/screens/signup_view.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(MyApp());
 }
 
@@ -19,7 +22,7 @@ class MyApp extends StatelessWidget {
           color: Colors.white,
         ) 
       ),
-      home: WelcomeView(),
+      home: SignupView(),
     );
   }
 }
