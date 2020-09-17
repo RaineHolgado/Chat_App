@@ -110,7 +110,7 @@
 //         Padding(
 //           padding: EdgeInsets.symmetric(
 //             horizontal: 10.0,
-//             vertical: 25.0,
+//             vertical: 20.0,
 //           ),
 //           child: isSendByMe
 //               ? Column(
