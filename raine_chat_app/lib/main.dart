@@ -1,6 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:raine_chat_app/screens/signup_view.dart';
+import 'package:raine_chat_app/screens/chat_room/chatroom_view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,11 +18,20 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.white,
         appBarTheme: AppBarTheme(
-          centerTitle: true,
-          color: Colors.white,
-        ) 
+            elevation: 0,
+            centerTitle: true,
+            color: Colors.white,
+            textTheme: TextTheme(
+              headline6: TextStyle(
+                color: Colors.black,
+                fontSize: 30,
+                letterSpacing: 3,
+                fontWeight: FontWeight.bold,
+              ),
+            )),
+        fontFamily: 'Arial',
       ),
-      home: SignupView(),
+      home: ChatRoomView(),
     );
   }
 }

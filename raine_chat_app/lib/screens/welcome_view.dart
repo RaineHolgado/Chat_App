@@ -1,52 +1,71 @@
 import 'package:flutter/material.dart';
+import 'package:raine_chat_app/common/custom_flatbutton.dart';
+import 'package:raine_chat_app/screens/login_view.dart';
+import 'package:raine_chat_app/screens/signup_view.dart';
 
 class WelcomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.symmetric(horizontal: 10),
+        padding: EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Container(
-              height: 50,
-              width: double.infinity,
-              child: FlatButton(
-                color: Color.fromARGB(255, 97, 176, 40),
-                onPressed: () {},
-                child: Text(
-                  "Sign up",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                      letterSpacing: 1.5,
-                      fontWeight: FontWeight.w700),
+            Stack(
+              children: <Widget>[
+                Align(
+                  alignment: Alignment.center,
+                  child: Container(
+                    height: 200,
+                    width: 200,
+                    decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage("images/chat_app_logo.png"),
+                          fit: BoxFit.fill),
+                    ),
+                  ),
                 ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(7.0),
+                Padding(
+                  padding: EdgeInsets.only(top: 190.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        "Chat app",
+                        style: TextStyle(
+                          color: Color(0xFF333333),
+                          fontSize: 50,
+                          letterSpacing: 3,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
+              ],
             ),
-            SizedBox(height: 15),
-            Container(
-              height: 50,
-              width: double.infinity,
-              child: FlatButton(
-                color: Color.fromARGB(255, 155, 227, 39),
-                onPressed: () {},
-                child: Text(
-                  "Login",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 18,
-                      letterSpacing: 1.5,
-                      fontWeight: FontWeight.w700),
-                ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(7.0),
-                ),
-              ),
+            SizedBox(height: 70),
+            CustomFlatButton(
+              label: "Sign up",
+              color: Color(0xFF62A304),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SignupView()),
+                );
+              },
+            ),
+            SizedBox(height: 20),
+            CustomFlatButton(
+              label: "Login",
+              color: Color(0xFF88E306),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => LoginView()),
+                );
+              },
             ),
           ],
         ),
@@ -54,3 +73,4 @@ class WelcomeView extends StatelessWidget {
     );
   }
 }
+

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-class ChatInputWidget extends StatefulWidget {
+class ChatInputWidget2 extends StatefulWidget {
   final Function(String) onSubmitted;
 
-  const ChatInputWidget({Key key, @required this.onSubmitted})
+  const ChatInputWidget2({Key key, @required this.onSubmitted})
       : super(key: key);
   @override
-  State<StatefulWidget> createState() => _ChatInputWidgetState();
+  State<StatefulWidget> createState() => _ChatInputWidget2State();
 }
 
-class _ChatInputWidgetState extends State<ChatInputWidget> {
+class _ChatInputWidget2State extends State<ChatInputWidget2> {
   
   TextEditingController editingController = TextEditingController();
   FocusNode focusNode = FocusNode();
