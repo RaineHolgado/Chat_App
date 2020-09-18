@@ -61,6 +61,7 @@ class _ChatRoomViewState extends State<ChatRoomView> {
                         children: [
                           Expanded(
                             child: ListView.builder(
+                              reverse: true,
                               itemCount: documents.length,
                               itemBuilder: (context, index) {
                                 return ChatWidget(

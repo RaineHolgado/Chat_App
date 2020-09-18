@@ -22,7 +22,7 @@ class WelcomeView extends StatelessWidget {
                     width: 200,
                     decoration: BoxDecoration(
                       image: DecorationImage(
-                          image: AssetImage("images/chat_app_logo.png"),
+                          image: AssetImage("assets/images/chat_app_logo.png"),
                           fit: BoxFit.fill),
                     ),
                   ),

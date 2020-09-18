@@ -13,5 +13,6 @@ class SignupViewModel extends BaseViewModel {
       password: password,
     );
     setBusy(false);
+    print(authenticationService.user.username);
   }
 }
