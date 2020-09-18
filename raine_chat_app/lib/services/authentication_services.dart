@@ -1,47 +1,48 @@
+
+
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:raine_chat_app/models/message.dart';
+import 'package:raine_chat_app/app/locator.dart';
 import 'package:raine_chat_app/models/user.dart';
+import 'package:raine_chat_app/services/firestore_services.dart';
 
 class AuthenticationService {
-  static final AuthenticationService _authenticationService =
-      new AuthenticationService._internal();
+  final FirestoreService _firestoreService = locator<FirestoreService>();
 
-  AuthenticationService._internal();
+  User _user;
+  User get user => _user;
 
-  factory AuthenticationService() {
-    AuthenticationService._internal();
-    return _authenticationService;
-  }
   void loginUser() {
     //
   }
-  void signupUser({User user}) {
+
+  Future signupUser({String username, String password}) async {
     try {
-      DocumentReference docRef =
-          FirebaseFirestore.instance.collection("User").doc();
-      user.id = docRef.id;
-      docRef.set(user.toMap());
+      DocumentReference docRef = _firestoreService.userColRef.doc(username);
+      await docRef.get().then((docResult) async {
+        if (docResult.exists) {
+          _user = await _populateUser(user: username);
+        } else {
+          _firestoreService.userColRef.doc(username).set({
+            "username": username,
+            "password": password,
+          });
+          _user = await _populateUser(user: username);
+        }
+      });
     } catch (e) {
       print(e);
     }
   }
 
-  void messageRoom({Message message}) {
-    try {
-      DocumentReference docRef =
-          FirebaseFirestore.instance.collection("Message").doc();
-      message.timestamp = DateTime.now().millisecondsSinceEpoch.toString();
-      message.senderUid = "mJxdWAWpjlMTwVVRUPfl";
-      docRef.set(message.toMap());
-    } catch (e) {
-      print(e);
-    }
+  Future _populateUser({String user}) {
+    return _firestoreService.userColRef
+        .doc(user)
+        .get()
+        .then((result) => User.fromMap(result.data()));
   }
 
-  Stream<List<Message>> getConversationMessages() {
-    return FirebaseFirestore.instance.collection("Message").snapshots().map(
-        (result) => result.docs.map((e) => Message.fromMap(e.data())).toList());
-  }
+  // void logout(){
+  //   _user = 
+  // }
+
 }
-
-final authenticationService = AuthenticationService();

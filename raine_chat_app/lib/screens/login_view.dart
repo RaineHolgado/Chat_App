@@ -4,7 +4,6 @@ import 'package:raine_chat_app/common/input_field.dart';
 import 'package:raine_chat_app/common/terms_and_policy.dart';
 import 'package:raine_chat_app/common/underlined_button.dart';
 import 'package:raine_chat_app/screens/chat_room/chatroom_view.dart';
-import 'package:raine_chat_app/screens/chatroom_view.dart';
 import 'package:raine_chat_app/screens/signup_view.dart';
 
 class LoginView extends StatelessWidget {

@@ -1,22 +1,22 @@
 import 'dart:convert';
 
 class Message {
-  String senderUid;
+  String name;
   String message;
   String timestamp;
   Message({
-    this.senderUid,
+    this.name,
     this.message,
     this.timestamp,
   });
 
   Message copyWith({
-    String senderUid,
+    String name,
     String message,
     String timestamp,
   }) {
     return Message(
-      senderUid: senderUid ?? this.senderUid,
+      name: name ?? this.name,
       message: message ?? this.message,
       timestamp: timestamp ?? this.timestamp,
     );
@@ -24,7 +24,7 @@ class Message {
 
   Map<String, dynamic> toMap() {
     return {
-      'senderUid': senderUid,
+      'name': name,
       'message': message,
       'timestamp': timestamp,
     };
@@ -34,7 +34,7 @@ class Message {
     if (map == null) return null;
   
     return Message(
-      senderUid: map['senderUid'],
+      name: map['name'],
       message: map['message'],
       timestamp: map['timestamp'],
     );
@@ -45,18 +45,18 @@ class Message {
   factory Message.fromJson(String source) => Message.fromMap(json.decode(source));
 
   @override
-  String toString() => 'Message(senderUid: $senderUid, message: $message, timestamp: $timestamp)';
+  String toString() => 'Message(name: $name, message: $message, timestamp: $timestamp)';
 
   @override
   bool operator ==(Object o) {
     if (identical(this, o)) return true;
   
     return o is Message &&
-      o.senderUid == senderUid &&
+      o.name == name &&
       o.message == message &&
       o.timestamp == timestamp;
   }
 
   @override
-  int get hashCode => senderUid.hashCode ^ message.hashCode ^ timestamp.hashCode;
+  int get hashCode => name.hashCode ^ message.hashCode ^ timestamp.hashCode;
 }

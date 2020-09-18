@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:raine_chat_app/common/custom_flatbutton.dart';
+import 'package:raine_chat_app/common/ui_helpers.dart';
 import 'package:raine_chat_app/screens/login_view.dart';
 import 'package:raine_chat_app/screens/signup_view.dart';
 
@@ -8,7 +9,7 @@ class WelcomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        padding: EdgeInsets.symmetric(horizontal: 20),
+        padding: fieldPadding,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -45,7 +46,7 @@ class WelcomeView extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 70),
+            verticalSpace(70),
             CustomFlatButton(
               label: "Sign up",
               color: Color(0xFF62A304),
@@ -56,7 +57,7 @@ class WelcomeView extends StatelessWidget {
                 );
               },
             ),
-            SizedBox(height: 20),
+            verticalSpaceSmall,
             CustomFlatButton(
               label: "Login",
               color: Color(0xFF88E306),
@@ -73,4 +74,3 @@ class WelcomeView extends StatelessWidget {
     );
   }
 }
-

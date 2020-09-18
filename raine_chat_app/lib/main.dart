@@ -1,15 +1,16 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:raine_chat_app/screens/chat_room/chatroom_view.dart';
+import 'package:raine_chat_app/app/locator.dart';
+import 'package:raine_chat_app/screens/welcome_view.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+  configure();
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
             )),
         fontFamily: 'Arial',
       ),
-      home: ChatRoomView(),
+      home: WelcomeView(),
     );
   }
 }
