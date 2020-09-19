@@ -1,7 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:raine_chat_app/common/ui_helpers.dart';
 import 'package:raine_chat_app/screens/chat_room/chat_input_widget.dart';
 import 'package:raine_chat_app/screens/chat_room/chat_message_widget.dart';
+import 'package:raine_chat_app/screens/signup_view.dart';
 import 'package:shape_of_view/shape_of_view.dart';
 import 'package:stacked/stacked.dart';
 
@@ -28,17 +30,43 @@ class _ChatRoomViewState extends State<ChatRoomView> {
                 title: Text(
                   "Chat app",
                 ),
+                actions: [
+                  Container(
+                    height: 55,
+                    width: 130,
+                    margin: EdgeInsets.only(right: 20),
+                    child: FlatButton(
+                      color: Color(0xFF666666),
+                      onPressed: () {
+                        model.logout();
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(builder: (context) => SignupView()),
+                        );
+                      },
+                      child: Text(
+                        "Log out",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 24,
+                          letterSpacing: 2,
+                          fontWeight: FontWeight.normal,
+                        ),
+                      ),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(10.0),
+                      ),
+                    ),
+                  )
+                ],
               ),
             ],
           ),
         ),
         body: Column(
           children: [
-            Container(
-              color: Color(0xFF647787),
-              height: 1,
-            ),
-            SizedBox(height: 40),
+            spacedDivider,
+            verticalSpaceMedium,
             Flexible(
               child: StreamBuilder(
                 stream: model.messageStream(),
@@ -79,13 +107,9 @@ class _ChatRoomViewState extends State<ChatRoomView> {
                 },
               ),
             ),
-            Container(
-              color: Color(0xFF647787),
-              height: 1,
-            ),
+            spacedDivider,
             ChatInputWidget(
               onSubmitted: (val) {
-                print(val);
                 model.messageSend(message: val);
               },
             ),

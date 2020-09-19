@@ -21,4 +21,8 @@ class ChatRoomViewModel extends BaseViewModel {
     newMessage.timestamp = DateTime.now().millisecondsSinceEpoch.toString();
     await _firestoreService.messageColRef.doc().set(newMessage.toMap());
   }
+
+  void logout() {
+    authenticationService.logout();
+  }
 }

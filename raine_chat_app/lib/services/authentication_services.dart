@@ -11,8 +11,21 @@ class AuthenticationService {
   User _user;
   User get user => _user;
 
-  void loginUser() {
-    //
+  Future loginUser({String username, String password}) async {
+    QuerySnapshot querySnapshot = await _firestoreService.userColRef.get();
+    List<DocumentSnapshot> documents = querySnapshot.docs
+        .where((snapshot) =>
+            snapshot.data()["username"] == username &&
+            snapshot.data()["password"] == password)
+        .toList();
+    if (documents.length != 0) {
+      documents.forEach((result) {
+        _user = User.fromMap(result.data());
+      });
+    } else {
+      return true;
+    }
+    return false;
   }
 
   Future signupUser({String username, String password}) async {
@@ -41,8 +54,8 @@ class AuthenticationService {
         .then((result) => User.fromMap(result.data()));
   }
 
-  // void logout(){
-  //   _user = 
-  // }
+  void logout() {
+    _user = null; //Signing out user => null
+  }
 
 }

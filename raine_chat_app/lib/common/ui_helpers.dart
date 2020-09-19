@@ -21,6 +21,4 @@ double screenHeight(BuildContext context) => MediaQuery.of(context).size.height;
 
 // Field Variables
 const EdgeInsets fieldPadding = const EdgeInsets.symmetric(horizontal: 20);
-const EdgeInsets largeFieldPadding =
-    const EdgeInsets.symmetric(horizontal: 15, vertical: 15);
 

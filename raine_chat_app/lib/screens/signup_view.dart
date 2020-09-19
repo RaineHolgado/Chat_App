@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:raine_chat_app/common/custom_flatbutton.dart';
 import 'package:raine_chat_app/common/input_field.dart';
+import 'package:raine_chat_app/common/loading.dart';
 import 'package:raine_chat_app/common/terms_and_policy.dart';
 import 'package:raine_chat_app/common/ui_helpers.dart';
 import 'package:raine_chat_app/common/underlined_button.dart';
@@ -48,6 +49,7 @@ class _SignupViewState extends State<SignupView> {
                 padding: EdgeInsets.symmetric(horizontal: 20),
                 child: Form(
                   key: _formKey,
+                  autovalidate: _autoValidate,
                   child: Column(
                     children: [
                       InputField(
@@ -79,9 +81,7 @@ class _SignupViewState extends State<SignupView> {
                       ),
                       verticalSpaceMedium,
                       model.isBusy
-                          ? Center(
-                              child: CircularProgressIndicator(),
-                            )
+                          ? Loading()
                           : CustomFlatButton(
                               label: "Sign up",
                               color: Color(0xFF88E306),
