@@ -105,7 +105,7 @@ class _LoginViewState extends State<LoginView> {
                             ),
                       verticalSpaceSmall,
                       UnderLineButton(
-                        label: "SIgn up",
+                        label: "Sign up",
                         onTap: () {
                           Navigator.pushReplacement(
                             context,

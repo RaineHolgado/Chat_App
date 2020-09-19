@@ -32,7 +32,7 @@ class _ChatInputWidgetState extends State<ChatInputWidget> {
                 cursorColor: Color(0xFF647787),
                 style: TextStyle(
                   color: Color(0xFF647787),
-                  fontSize: 30,
+                  fontSize: 24,
                   letterSpacing: 2,
                   fontWeight: FontWeight.normal,
                 ),
@@ -80,7 +80,7 @@ class _ChatInputWidgetState extends State<ChatInputWidget> {
                 sendMessage(editingController.text);
               },
               child: Text(
-                "Send",
+                "send",
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 24,

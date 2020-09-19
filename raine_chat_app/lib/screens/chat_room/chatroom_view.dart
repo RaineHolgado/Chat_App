@@ -110,7 +110,9 @@ class _ChatRoomViewState extends State<ChatRoomView> {
             spacedDivider,
             ChatInputWidget(
               onSubmitted: (val) {
-                model.messageSend(message: val);
+                if (val != "") {
+                  model.messageSend(message: val);
+                }
               },
             ),
           ],
